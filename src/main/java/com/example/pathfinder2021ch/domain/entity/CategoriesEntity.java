@@ -10,7 +10,6 @@ public class CategoriesEntity extends BaseEntity{
     @Column(nullable = false, unique = true)
     @Enumerated(EnumType.STRING)
     private NameCategoryEnum name;
-
     @Column(columnDefinition = "TEXT")
     private String description;
 
