@@ -13,7 +13,7 @@ public class RouteEntity extends BaseEntity{
     private String gpxCoordinates;
     @Column(columnDefinition = "TEXT")
     private String description;
-    @Column(name = "level_enum")
+    @Column
     @Enumerated(EnumType.STRING)
     private LevelRouteEnum level;
     @Column(unique = true, nullable = false)
