@@ -1,6 +1,7 @@
 package com.example.pathfinder2021ch.domain.bidingDto;
 
 import jakarta.persistence.Column;
+import jakarta.validation.constraints.Min;
 
 public class UserRegisterBidingModel {
 
@@ -8,6 +9,7 @@ public class UserRegisterBidingModel {
     private String username;
     private String fullName;
     private String email;
+    @Min(10)
     private Integer age;
     private String password;
     private String confirmPassword;
