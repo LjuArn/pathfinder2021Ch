@@ -1,9 +1,8 @@
 package com.example.pathfinder2021ch.domain.bidingDto;
 
-import jakarta.persistence.Column;
 import jakarta.validation.constraints.Min;
 
-public class UserRegisterBidingModel {
+public class UserRegisterBindingModel {
 
 
     private String username;
@@ -14,14 +13,14 @@ public class UserRegisterBidingModel {
     private String password;
     private String confirmPassword;
 
-    public UserRegisterBidingModel() {
+    public UserRegisterBindingModel() {
     }
 
     public String getUsername() {
         return username;
     }
 
-    public UserRegisterBidingModel setUsername(String username) {
+    public UserRegisterBindingModel setUsername(String username) {
         this.username = username;
         return this;
     }
@@ -30,7 +29,7 @@ public class UserRegisterBidingModel {
         return fullName;
     }
 
-    public UserRegisterBidingModel setFullName(String fullName) {
+    public UserRegisterBindingModel setFullName(String fullName) {
         this.fullName = fullName;
         return this;
     }
@@ -39,7 +38,7 @@ public class UserRegisterBidingModel {
         return email;
     }
 
-    public UserRegisterBidingModel setEmail(String email) {
+    public UserRegisterBindingModel setEmail(String email) {
         this.email = email;
         return this;
     }
@@ -48,7 +47,7 @@ public class UserRegisterBidingModel {
         return age;
     }
 
-    public UserRegisterBidingModel setAge(Integer age) {
+    public UserRegisterBindingModel setAge(Integer age) {
         this.age = age;
         return this;
     }
@@ -57,7 +56,7 @@ public class UserRegisterBidingModel {
         return password;
     }
 
-    public UserRegisterBidingModel setPassword(String password) {
+    public UserRegisterBindingModel setPassword(String password) {
         this.password = password;
         return this;
     }
@@ -66,7 +65,7 @@ public class UserRegisterBidingModel {
         return confirmPassword;
     }
 
-    public UserRegisterBidingModel setConfirmPassword(String confirmPassword) {
+    public UserRegisterBindingModel setConfirmPassword(String confirmPassword) {
         this.confirmPassword = confirmPassword;
         return this;
     }
