@@ -12,11 +12,12 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
 @Controller
-//@RequestMapping("/users")
+@RequestMapping("/users")
 public class UserController {
 
     private final UserService userService;
@@ -27,7 +28,7 @@ public class UserController {
         this.modelMapper = modelMapper;
     }
 
-    @ModelAttribute("userRegisterBindingModel")
+    @ModelAttribute
     public UserRegisterBindingModel userRegisterBindingModel(){
         return new UserRegisterBindingModel();
     }
@@ -38,7 +39,7 @@ public class UserController {
         return  new UserLoginBindingModel();
     }
 
-    @GetMapping("/users/register")
+    @GetMapping("/register")
     public String register(Model model){
         return "register";
     }
@@ -54,7 +55,7 @@ public class UserController {
     */
 
 
-    @PostMapping("/users/register")
+    @PostMapping("/register")
     public String registerConfirm(@Valid UserRegisterBindingModel userRegisterBindingModel,
                                   BindingResult bindingResult,
                                   RedirectAttributes redirectAttributes){
@@ -77,12 +78,12 @@ public class UserController {
     }
 
 
-    @GetMapping("/users/login")
+    @GetMapping("/login")
     public String login(Model model){
         return "login";
     }
 
-    @PostMapping("/users/login")
+    @PostMapping("/login")
     public String loginConfirm(@Valid UserLoginBindingModel userLoginBindingModel,
                                BindingResult bindingResult,
                                RedirectAttributes redirectAttributes){
@@ -113,9 +114,7 @@ public class UserController {
         }
 
 
-
-
-        //return "redirect:login";
+        return "redirect:login";
     }
 
 }
