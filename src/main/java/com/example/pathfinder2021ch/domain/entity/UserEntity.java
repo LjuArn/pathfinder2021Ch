@@ -24,7 +24,7 @@ public class UserEntity extends BaseEntity{
     @Enumerated(EnumType.STRING)
     private LevelUserEnum level;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     private Set<RoleEntity> roles;
 
     public UserEntity() {

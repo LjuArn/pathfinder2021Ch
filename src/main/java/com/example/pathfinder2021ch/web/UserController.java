@@ -4,6 +4,7 @@ import com.example.pathfinder2021ch.domain.bidingDto.UserLoginBindingModel;
 import com.example.pathfinder2021ch.domain.bidingDto.UserRegisterBindingModel;
 import com.example.pathfinder2021ch.domain.serviceDto.UserServiceModel;
 import com.example.pathfinder2021ch.service.UserService;
+import com.example.pathfinder2021ch.util.CurrentUser;
 import jakarta.validation.Valid;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Controller;
@@ -22,10 +23,13 @@ public class UserController {
 
     private final UserService userService;
     private final ModelMapper modelMapper;
+    private final CurrentUser currentUser;
 
-    public UserController(UserService userService, ModelMapper modelMapper) {
+    public UserController(UserService userService, ModelMapper modelMapper,
+                          CurrentUser currentUser) {
         this.userService = userService;
         this.modelMapper = modelMapper;
+        this.currentUser = currentUser;
     }
 
     @ModelAttribute
@@ -80,6 +84,7 @@ public class UserController {
 
     @GetMapping("/login")
     public String login(Model model){
+        model.addAttribute("isNotExist", false);
         return "login";
     }
 
@@ -98,23 +103,30 @@ public class UserController {
 
         }
 
-        UserServiceModel userCurrent = userService
+        UserServiceModel user = userService
                .findUserByUsernameAndPassword(userLoginBindingModel.getUsername(),
                        userLoginBindingModel.getPassword());
 
 
-        if(userCurrent==null){
+        if(user==null){
             redirectAttributes
                     .addFlashAttribute("isNotExist", true)
-                    .addFlashAttribute("userLoginBindingModel", userLoginBindingModel)
                     .addFlashAttribute("org.springframework.validation.BindingResult.userLoginBindingModel",
-                            bindingResult);
+                            bindingResult)
+                    .addFlashAttribute("userLoginBindingModel", userLoginBindingModel);
             return "redirect:login";
 
         }
 
+        loginUser(user.getId(), user.getUsername());
 
-        return "redirect:login";
+        return "redirect:/";
     }
+
+    private void loginUser(Long id, String username) {
+
+        currentUser.setId(id).setUsername(username);
+    }
+
 
 }
