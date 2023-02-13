@@ -25,10 +25,22 @@ public class RouteEntity extends BaseEntity{
     @JoinColumn(name = "author_id")
     private UserEntity author;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     private Set<CategoriesEntity> categories;
 
+    @OneToMany(mappedBy = "route", fetch = FetchType.EAGER)
+    private Set<PicturesEntity> pictures;
+
     public RouteEntity() {
+    }
+
+    public Set<PicturesEntity> getPictures() {
+        return pictures;
+    }
+
+    public RouteEntity setPictures(Set<PicturesEntity> pictures) {
+        this.pictures = pictures;
+        return this;
     }
 
     public String getGpxCoordinates() {

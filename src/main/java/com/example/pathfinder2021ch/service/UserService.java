@@ -14,4 +14,7 @@ public interface UserService {
     void logOut();
 
     UserServiceModel findById(Long id);
+
+
+    boolean isNameExistMethod(String username);
 }
