@@ -34,15 +34,6 @@ public class RouteEntity extends BaseEntity{
     public RouteEntity() {
     }
 
-    public Set<PicturesEntity> getPictures() {
-        return pictures;
-    }
-
-    public RouteEntity setPictures(Set<PicturesEntity> pictures) {
-        this.pictures = pictures;
-        return this;
-    }
-
     public String getGpxCoordinates() {
         return gpxCoordinates;
     }
@@ -103,6 +94,15 @@ public class RouteEntity extends BaseEntity{
 
     public RouteEntity setCategories(Set<CategoriesEntity> categories) {
         this.categories = categories;
+        return this;
+    }
+
+    public Set<PicturesEntity> getPictures() {
+        return pictures;
+    }
+
+    public RouteEntity setPictures(Set<PicturesEntity> pictures) {
+        this.pictures = pictures;
         return this;
     }
 }
